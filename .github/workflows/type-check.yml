@@ -1,4 +1,4 @@
-name: test 
+name: type-check 
 
 on:
   pull_request:
