@@ -22,7 +22,7 @@
     "@types/dedent": "0.7.0",
     "@types/eslint": "8.4.5",
     "@types/estree": "1.0.0",
-    "@types/jest": "28.1.5",
+    "@types/jest": "28.1.6",
     "@typescript-eslint/parser": "5.30.6",
     "@typescript-eslint/utils": "5.30.6",
     "commitlint": "17.0.3",
