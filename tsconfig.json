@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "lib": ["es2018"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitThis": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
+  }
+}
