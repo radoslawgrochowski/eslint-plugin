@@ -3,24 +3,25 @@ import createRule from "../../create-rule";
 
 type CallExpression = TSESTree.CallExpression
 
-type ValidDescribeNode = CallExpression & { arguments: [{ value: string }, ...any] }
-const isValidDescribe = (node: CallExpression): node is ValidDescribeNode => {
-  if (!("name" in node.callee)) return false
-  if (node.callee.name != "describe") return false
+const hasLiteralAsFirstArgument = (node: CallExpression) => {
   const argument = node.arguments[0]
   if (!argument) return false
   if (argument.type !== 'Literal') return false
   return true
 }
 
+type ValidDescribeNode = CallExpression & { arguments: [{ value: string }, ...any] }
+const isValidDescribe = (node: CallExpression): node is ValidDescribeNode => {
+  if (!("name" in node.callee)) return false
+  if (node.callee.name != "describe") return false
+  return hasLiteralAsFirstArgument(node)
+}
+
 type ValidItNode = CallExpression & { arguments: [{ value: string }, ...any] }
 const isValidIt = (node: CallExpression): node is ValidItNode => {
   if (!("name" in node.callee)) return false
   if (node.callee.name != "it") return false
-  const argument = node.arguments[0]
-  if (!argument) return false
-  if (argument.type !== 'Literal') return false
-  return true
+  return hasLiteralAsFirstArgument(node)
 }
 
 type MessageIds = 'mention'
