@@ -3,4 +3,4 @@ import rules from './rules'
 
 const plugin: Linter.Plugin = { rules }
 
-export default plugin
+export = { ...plugin }
