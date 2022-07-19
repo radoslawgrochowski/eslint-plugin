@@ -1,10 +1,10 @@
 import rule from '.'
-import { ESLintUtils } from '@typescript-eslint/utils';
+import { ESLintUtils } from '@typescript-eslint/utils'
 
 const ruleTester = new ESLintUtils.RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaFeatures: { jsx: true } }
-});
+})
 
 ruleTester.run('describe-mentions-component', rule, {
   valid: [
@@ -80,7 +80,7 @@ ruleTester.run('describe-mentions-component', rule, {
           })
         })
       `,
-      errors: [{ messageId: "mention", }],
+      errors: [{ messageId: 'mention', }],
     },
     {
       code: `
@@ -90,7 +90,7 @@ ruleTester.run('describe-mentions-component', rule, {
           })
         })
       `,
-      errors: [{ messageId: "mention", }],
+      errors: [{ messageId: 'mention', }],
     },
     {
       code: `
@@ -100,7 +100,7 @@ ruleTester.run('describe-mentions-component', rule, {
           })
         })
       `,
-      errors: [{ messageId: "mention", }],
+      errors: [{ messageId: 'mention', }],
     },
     {
       code: `
@@ -110,7 +110,7 @@ ruleTester.run('describe-mentions-component', rule, {
           })
         })
       `,
-      errors: [{ messageId: "mention", }],
+      errors: [{ messageId: 'mention', }],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('describe-mentions-component', rule, {
           })
         })
       `,
-      errors: [{ messageId: "mention", }],
+      errors: [{ messageId: 'mention', }],
     }
   ],
-});
+})

@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "type-check": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint \"**/*.ts\" --max-warnings 0"
   },
   "author": "radoslawgrochowski",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "@types/eslint": "8.4.5",
     "@types/estree": "1.0.0",
     "@types/jest": "28.1.6",
-    "@typescript-eslint/parser": "5.30.6",
+    "@typescript-eslint/eslint-plugin": "5.30.7",
+    "@typescript-eslint/parser": "5.30.7",
     "@typescript-eslint/utils": "5.30.6",
     "commitlint": "17.0.3",
     "eslint": "8.19.0",

@@ -1,5 +1,5 @@
-import { TSESTree } from "@typescript-eslint/utils";
-import createRule from "../../create-rule";
+import { TSESTree } from '@typescript-eslint/utils'
+import createRule from '../../create-rule'
 
 type CallExpression = TSESTree.CallExpression
 
@@ -10,32 +10,32 @@ const hasLiteralAsFirstArgument = (node: CallExpression) => {
   return true
 }
 
-type ValidDescribeNode = CallExpression & { arguments: [{ value: string }, ...any] }
+type ValidDescribeNode = CallExpression & { arguments: [{ value: string }] }
 const isValidDescribe = (node: CallExpression): node is ValidDescribeNode => {
-  if (!("name" in node.callee)) return false
-  if (node.callee.name != "describe") return false
+  if (!('name' in node.callee)) return false
+  if (node.callee.name != 'describe') return false
   return hasLiteralAsFirstArgument(node)
 }
 
-type ValidItNode = CallExpression & { arguments: [{ value: string }, ...any] }
+type ValidItNode = CallExpression & { arguments: [{ value: string }] }
 const isValidIt = (node: CallExpression): node is ValidItNode => {
-  if (!("name" in node.callee)) return false
-  if (node.callee.name != "it") return false
+  if (!('name' in node.callee)) return false
+  if (node.callee.name != 'it') return false
   return hasLiteralAsFirstArgument(node)
 }
 
 type MessageIds = 'mention'
 
-const rule = createRule<any[], MessageIds>({
+const rule = createRule<unknown[], MessageIds>({
   name: 'describe-mentions-component',
   meta: {
-    type: "suggestion",
+    type: 'suggestion',
     docs: {
-      description: "Ensure description of test case matches name of tested JSX Element or hook",
+      description: 'Ensure description of test case matches name of tested JSX Element or hook',
       recommended: 'error',
     },
     messages: {
-      mention: 'Describe should mention usage of testing unit: {{ names }}!',
+      mention: 'describe() should mention usage of {{ names }}',
     },
     schema: []
   },
@@ -71,6 +71,7 @@ const rule = createRule<any[], MessageIds>({
       },
       Identifier: (node) => {
         if (node.name.startsWith('use')) {
+          if (hookNames.includes(node.name)) return
           hookNames.push(node.name)
         }
       },
@@ -79,10 +80,11 @@ const rule = createRule<any[], MessageIds>({
         if (!identifier) return
         const componentName = 'name' in identifier && typeof identifier.name === 'string' && identifier.name
         if (!(componentName)) return
+        if (componentNames.includes(componentName)) return
         componentNames.push(componentName)
       },
-    };
+    }
   },
-});
+})
 
 export default rule
