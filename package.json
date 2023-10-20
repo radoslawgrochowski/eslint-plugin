@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
-    "@commitlint/config-conventional": "17.0.3",
+    "@commitlint/config-conventional": "17.8.1",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@swc/core": "1.2.218",
