@@ -19,7 +19,7 @@
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@swc/core": "1.2.218",
-    "@swc/jest": "0.2.21",
+    "@swc/jest": "0.2.36",
     "@types/dedent": "0.7.0",
     "@types/eslint": "8.4.5",
     "@types/estree": "1.0.0",
